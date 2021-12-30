@@ -1,4 +1,5 @@
-baseurl: https://groverkss.github.io
+# baseurl: https://groverkss.github.io
+baseurl:
 title: Blog
 author: Kunwar Shaanjeet Singh Groverk
 simple_search: http://google.com/search
