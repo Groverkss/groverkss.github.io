@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>blog</title>
-  <meta name="description" content="I write my thoughts here">
+  <title>My LLVM Commit Workflow</title>
+  <meta name="description" content="This is my workflow for commiting a patch from phabricator to LLVM git repo.">
 
   <!-- Google Fonts loaded here depending on setting in _data/options.yml true loads font, blank does not-->
   
@@ -45,12 +45,12 @@
   <link rel="stylesheet" type="text/css" href="/css/tufte.css">
   <!-- <link rel="stylesheet" type="text/css" href="/css/print.css" media="print"> -->
 
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/articles/22/LLVM-Commit-Flow">
 
   <link rel="alternate" type="application/rss+xml" title="Blog" href="/feed.xml" />
 </head>
 
-  <body class="full-width">
+  <body>
     <!--- Header and nav template site-wide -->
 <header>
     <nav class="group">
@@ -60,7 +60,7 @@
   	
 		
 		    
-		      <a class="active" href="/" class="active">blog</a>
+		      <a href="/">blog</a>
 		    
 	    
   	
@@ -93,31 +93,28 @@
 	</nav>
 </header>
 
-    <article>
-        <h1 class="content-listing-header sans">Articles</h1>
-  <ul class="content-listing ">
-          
-        <li class="listing">
-          <hr class="slender">
-          <a href="/articles/22/LLVM-Commit-Flow"><h3 class="contrast">My LLVM Commit Workflow</h3></a>
-          <br><span class="smaller">January 6, 2022</span>  <br/>
-          <div><p>This is my workflow for commiting a patch from phabricator to LLVM git repo.</p>
+    <article class="group">
+      <h1>My LLVM Commit Workflow</h1>
+<p class="subtitle">January 6, 2022</p>
 
-</div> 
-        </li>
-          
-        <li class="listing">
-          <hr class="slender">
-          <a href="/articles/21/Test-Post"><h3 class="contrast">Test Post</h3></a>
-          <br><span class="smaller">December 30, 2021</span>  <br/>
-          <div><p><span class="newthought">The Tufte Jekyll theme</span>  is an attempt to create a website design with the look and feel of Edward Tufte’s books and handouts. Tufte’s style is known for its extensive use of sidenotes, tight integration of graphics with text, and well-set typography.</p>
+<p>This is my workflow for commiting a patch from phabricator to LLVM git repo.</p>
 
-</div> 
-        </li>
-    
-  </ul>
+<!--more-->
+<p>I started following this religously after I accidently sent 14
+commited to LLVM monorepo which were supposed to go as 1 commit <label for="1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="1" class="margin-toggle" /><span class="sidenote"><a href="https://reviews.llvm.org/D112867#3168270">The horror</a> </span> and then
+proceeded to cry all night.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>arc patch D&lt;patch-number&gt; <span class="c"># Pull patch</span>
+git pull <span class="nt">--rebase</span> https://github.com/llvm/llvm-project.git main
+git show <span class="c"># Ensure the patch looks correct.</span>
+ninja check-mlir <span class="c"># Run tests</span>
+git push https://github.com/llvm/llvm-project.git HEAD:main
+</code></pre></div></div>
+
+
+
     </article>
-    <span class="print-footer">blog - Kunwar Shaanjeet Singh Groverk</span>
+    <span class="print-footer">My LLVM Commit Workflow - January 6, 2022 - Kunwar Shaanjeet Singh Groverk</span>
     <footer>
   <hr class="slender">
   <ul class="footer-links">
